@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.contrib import messages
-from pytube import *
+from pytube import YouTube
 from pytube.cli import on_progress
 
 # Create your views here.
