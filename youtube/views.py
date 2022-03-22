@@ -14,7 +14,7 @@ def home(request):
         url=request.POST['url']
         video= YouTube(url,on_progress_callback=on_progress)
         stream=video.streams.get_highest_resolution()
-        stream.download("/storage/emulated/0/Download")
+        stream.download("storage/emulated/0/Download")
 #         stream.download("/Downloads")
         messages.info(request,'Video Download.....')
         return render(request,'home.html')
