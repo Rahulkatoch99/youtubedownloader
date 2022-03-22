@@ -10,7 +10,7 @@ def home(request):
         url=request.POST['url']
         video= YouTube(url,on_progress_callback=on_progress)
         stream=video.streams.get_highest_resolution()
-        stream.download("~/Download")
+        stream.download("/Download")
         messages.info(request,'Video Download.....')
         return render(request,'home.html')
     return render(request,'home.html')
