@@ -3,7 +3,7 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <![endif]-->
 <html>
     <head>
         <meta charset="utf-8">
@@ -14,19 +14,49 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
         <link rel="stylesheet" href="{% static 'blog/css/style.css' %}">
     </head>
+    <header>
+    </header>
     <body id="bg" style="background-image: url('{% static "blog/images/yt.jfif" %}')">
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-dark  {% block fixed %} fixed-top {% endblock fixed %} bg-dark"  class="mobile-nav d-lg-none">
+                <div class="container-fluid">
+                  
+                  <a class="navbar-brand">Youtube Downloader</a>
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                      {% comment %} <a class="nav-link active" aria-current="page" href="{% url 'login'%}">LOGIN</a> {% endcomment %}
+                      {% comment %} <a class="nav-link active" aria-current="page" href="">HOME</a> {% endcomment %}
+                      <a class="nav-link active" aria-current="page" href="">About Us</a>
+                      {% comment %} <a class="nav-link active" aria-current="page" href="">Services</a>
+                      <a class="nav-link active" aria-current="page" href="">Contact Us</a>
+                       {% endcomment %}
+                    
+                    
+                    
+                      
+                      
+                      
+                    </div>
+                  </div>
+                </div>
+              </nav>
+    </header>
+    <main>
         <div class="container-fluid ">
             <div class="row align-items-start">
                 <div class="col"></div>
                 <div class="col"></div> 
                 <div class="col"><br><br><br><br>
-                    <h2 class="text-center mt-5 text-primary">YouTube Video Downloader</h2>
+                    <h2 class="text-center mt-5 text-primary">YouTube Video Downloader</h2><br>
+                    <h2 class="text-center mt-5 text-danger">Copy the link from the youtube and then paste to downloade the youtube video</h2>
                     {% if messages %}
                     {% for message in messages %}
                     <div class="alert alert-info alert-dismissible fade show text-center" role="alert">
                         {{message}}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
-                    </div>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>                    </div>
                     {% endfor %}
                     {% endif %}
                     <div>
@@ -34,27 +64,27 @@
                             {% csrf_token %}
                             {% comment %} <label for="link"><h3>Enter URL:</h3></label> {% endcomment %}
                             <input type="url" class="form-control" placeholder="Enter Your URL" id="url" name="url" required><br><br>
-<!--                             <select id="ch" class="doc">
+                            {% comment %} <select id="ch" class="doc"> {% endcomment %}
                                 {% comment %} <optgroup label="Audio"><option value="mp3" class="doc">MP3</option>
                                     <option value="m4a" class="doc">M4A</option><option value="webm" class="doc">WEBM</option>
                                     <option value="aac" class="doc">AAC</option><option value="flac" class="doc">FLAC</option><option value="opus" class="doc">OPUS</option>
                                     <option value="ogg" class="doc">OGG</option><option value="wav" class="doc">WAV</option>
                                 </optgroup> {% endcomment %}
-                                <optgroup label="Video">
+                                {% comment %} <optgroup label="Video">
                                     <option id="ch" value="360" class="doc">MP4 (360p)</option>
                                     <option id="ch" value="480" class="doc">MP4 (480p)</option>
-                                    <option id="ch" value="720" class="doc">MP4 (720p)</option>
+                                    <option id="ch" value="720" class="doc">MP4 (720p)</option> {% endcomment %}
                                     {% comment %} <option id="ch" value="1080" selected="selected" class="doc">MP4 (1080p)</option> {% endcomment %}
                                     {% comment %} <option id="ch" value="1440" class="doc">MP4 (1440p)</option>
                                     <option id="ch" value="4k" class="doc">WEBM (4K)</option>
                                     <option id="ch" value="8k" class="doc">WEBM (8K)</option> {% endcomment %}
-                                </optgroup>
-                            </select> -->
+                                {% comment %} </optgroup>
+                            </select> --> {% endcomment %}
                             <div id="progress-wrapper">
                                 <input id="progress-bar-trigger" type="submit" value="Download Video" class="btn btn-primary">
                                 {% comment %} <button id="progress-bar-trigger">Download</button> {% endcomment %}
                                 {% comment %} <div id="progress-bar" style="background-color: green; width: 0%;">&nbsp;</div> {% endcomment %}
-                                <div id="progress-bar" class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">&nbsp;</div>
+                                <div id="progress-bar" class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">&nbsp;</div><br>
                                 <div id="progress-bar-message"><h4 class="text-center mt-3 text-info">Waiting for progress to start...</h4></div>
                             </div>
                         </form>
@@ -62,8 +92,15 @@
                 </div>
             </div>
         </div>
-        
-        
+    </main>
+    {% comment %} <footer id="footer">
+        <div class="container">
+            <div class="copyright">
+              &copy; Copyright <strong><span>Youtube Downloader</span></strong>. All Rights Reserved
+            </div>
+            <div class="text-center"><b>Downloade the video as much as you can</b></div>
+          </div>
+    </footer> {% endcomment %}
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
